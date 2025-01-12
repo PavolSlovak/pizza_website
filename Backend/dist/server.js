@@ -4,20 +4,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.stripe = void 0;
-// server.js
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
+const dotenv_2 = require("dotenv");
 const cors_js_1 = require("./middlewares/cors.js");
 const db_js_1 = require("./config/db.js");
 const path_1 = __importDefault(require("path"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-// Remove app.listen() for serverless
+const PORT = process.env.PORT || 3000;
+app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
+console.log("Port:", process.env.PORT);
+console.log("Environment:", process.env.NODE_ENV);
+if (process.env.NODE_ENV !== "production") {
+    (0, dotenv_2.config)();
+}
 (0, db_js_1.connectDB)();
 app.use(cors_js_1.corsMiddleware);
 app.use(express_1.default.json({ limit: "50mb" }));
 app.use(express_1.default.urlencoded({ extended: true, limit: "50mb" }));
-app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
 const stripe_1 = __importDefault(require("stripe"));
 if (!process.env.STRIPE_PRIVATE_KEY) {
     throw new Error("Stripe private key is not defined");
@@ -35,8 +40,10 @@ app.use("/api/subscribe", subscribeRoutes_js_1.subscribeRouter);
 app.get("/", (req, res) => {
     res.send("Hello, welcome to the API!");
 });
-// Export the handler to Vercel
-exports.default = (req, res) => {
-    app(req, res); // Use Express as a handler for serverless
-};
+if (process.env.NODE_ENV !== "production") {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}
+exports.default = app;
 //# sourceMappingURL=server.js.map
