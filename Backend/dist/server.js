@@ -11,14 +11,14 @@ const cors_js_1 = require("./middlewares/cors.js");
 const db_js_1 = require("./config/db.js");
 const path_1 = __importDefault(require("path"));
 dotenv_1.default.config();
+if (process.env.NODE_ENV !== "production") {
+    (0, dotenv_2.config)();
+}
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
 console.log("Port:", process.env.PORT);
 console.log("Environment:", process.env.NODE_ENV);
-if (process.env.NODE_ENV !== "production") {
-    (0, dotenv_2.config)();
-}
 (0, db_js_1.connectDB)();
 app.use(cors_js_1.corsMiddleware);
 app.use(express_1.default.json({ limit: "50mb" }));

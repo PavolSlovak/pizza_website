@@ -1,9 +1,9 @@
 import { TCartItem, TOrderForm } from "../schemas/schemas";
 
-const baseUrl = import.meta.env.VITE_BASE_URL;
-console.log("baseUrl: ", baseUrl);
+const baseUrl = import.meta.env.VITE_API_URL;
+
 export const fetchMenu = async () => {
-  const response = await fetch(baseUrl + "/menus", {
+  const response = await fetch(baseUrl + "/api/menus", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export const fetchMenu = async () => {
 
 export const fetchStoresLocations = async () => {
   console.log("fetching store locations");
-  const response = await fetch(baseUrl + "/locations", {
+  const response = await fetch(baseUrl + "api/locations", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const fetchStoresLocations = async () => {
   return response.json();
 };
 export const postOrder = async (order: TOrderForm) => {
-  const response = await fetch(baseUrl + "/orders", {
+  const response = await fetch(baseUrl + "api/orders", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

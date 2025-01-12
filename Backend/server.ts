@@ -6,6 +6,10 @@ import { connectDB } from "./config/db.js";
 import path from "path";
 
 dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+  dotenvConfig();
+}
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -13,10 +17,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 console.log("Port:", process.env.PORT);
 console.log("Environment:", process.env.NODE_ENV);
-
-if (process.env.NODE_ENV !== "production") {
-  dotenvConfig();
-}
 
 connectDB();
 
