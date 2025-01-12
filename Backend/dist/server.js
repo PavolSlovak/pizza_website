@@ -21,6 +21,7 @@ console.log("Port:", process.env.PORT);
 console.log("Environment:", process.env.NODE_ENV);
 (0, db_js_1.connectDB)();
 app.use(cors_js_1.corsMiddleware);
+app.options("*", cors_js_1.corsMiddleware);
 app.use(express_1.default.json({ limit: "50mb" }));
 app.use(express_1.default.urlencoded({ extended: true, limit: "50mb" }));
 const stripe_1 = __importDefault(require("stripe"));

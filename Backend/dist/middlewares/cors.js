@@ -6,9 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.corsMiddleware = void 0;
 const cors_1 = __importDefault(require("cors"));
 const corsOptions = {
-    origin: "*",
+    origin: process.env.NODE_ENV === "production" ? process.env.CLIENT_URL : "*", // Use CLIENT_URL for production, allow all origins in development
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
 };
+console.log("CORS options:", corsOptions); // Check the CORS settings
 exports.corsMiddleware = (0, cors_1.default)(corsOptions);
 //# sourceMappingURL=cors.js.map
