@@ -24,6 +24,6 @@
   },
   "typeRoots": ["./node_modules/@types", "./shared/node_modules/@types"], // Include shared types if needed
 
-  "include": ["./**/*", "../shared/**/*"],
+  "include": ["./**/*"],
   "exclude": ["node_modules, dist"]
 }
