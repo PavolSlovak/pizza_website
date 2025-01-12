@@ -9,7 +9,9 @@ export default defineConfig({
       external: ["react-redux"], // Add react-redux here
     },
   },
-
+  optimizeDeps: {
+    include: ["react-redux"],
+  },
   server: {
     fs: {
       allow: [".."],
