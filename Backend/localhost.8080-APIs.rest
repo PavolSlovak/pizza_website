@@ -1,0 +1,85 @@
+
+
+
+### GET all menu items
+
+
+GET http://localhost:8080/api/menus
+Content-Type: application/json
+
+
+### POST pizza store locations
+
+POST http://localhost:8080/api/locations
+Content-Type: application/json
+
+{
+   "locations": [
+    {
+      "name": "Levante's Pizza Pezinok",
+      "address": "Hrnciarska 81",
+      "city": "Pezinok",
+      "postalCode": "90201",
+      "state": "Slovakia",
+      "phone": "415-123-4567",
+      "lat": 48.289125580593755,
+      "lon": 17.264116813057328
+    },
+    {
+      "name": "Levante's Pizza Manly",
+      "address": "24 Raglan St",
+      "city": "Manly",
+      "postalCode": "2095",
+      "state": "NSW Australia",
+      "phone": "02-1234-5678",
+      "lat": -33.79514610469187,
+      "lon": 151.28569156072876
+    }
+    ]
+}
+
+
+### GET pizza store locations
+
+
+GET http://localhost:8080/api/locations
+Content-Type: application/json
+
+
+### POST order
+
+POST http://localhost:8080/api/orders
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "johndoe@gmail.com",
+  "phone": "415-123-4567",
+  "streetAddress": "Hrnciarska",
+  "streetAddress2": "81",
+  "postalCode": "90201",
+  "city": "Pezinok",
+  "state": "Slovakia",
+  "deliveryType": "delivery",
+  "items": [
+    {
+      "id": "677b24da95670ac07fd86104",
+      "quantity": 2
+    },
+    {
+      "id": "677b24da95670ac07fd86107",
+      "quantity": 3
+    }
+  ],
+  "total": 75.00,
+  "isPayed": false
+}
+
+### Add new subscriber
+
+POST http://localhost:8080/api/subscribe
+Content-Type: application/json
+
+{
+  "email": "pavol@pavol.com"  
+}
