@@ -21,6 +21,7 @@ console.log("Environment:", process.env.NODE_ENV);
 connectDB();
 
 app.use(corsMiddleware);
+app.options("*", corsMiddleware);
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
