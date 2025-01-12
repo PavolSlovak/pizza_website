@@ -5,8 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node ./dist/server.js",
-    "build": "tsc",
-    "dev": "tsc -w & nodemon ./dist/server.js"
+    "build": "rimraf dist && tsc",
+    "dev": "tsc -w & nodemon ./dist/server.js",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist"
   },
   "author": "",
   "license": "ISC",
