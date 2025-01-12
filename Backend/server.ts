@@ -4,6 +4,7 @@ import express, { Request, Response } from "express";
 import { config as dotenvConfig } from "dotenv";
 import { corsMiddleware } from "./middlewares/cors.js";
 import { connectDB } from "./config/db.js";
+import path from "path";
 
 dotenv.config();
 const app = express();
@@ -13,6 +14,8 @@ connectDB();
 app.use(corsMiddleware);
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+
+app.use(express.static(path.join(__dirname, "public")));
 
 import Stripe from "stripe";
 if (!process.env.STRIPE_PRIVATE_KEY) {
@@ -31,6 +34,10 @@ app.use("/api/menus", menuRouter);
 app.use("/api/locations", locationRouter);
 app.use("/api/subscribe", subscribeRouter);
 
+// Handle root route
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello, welcome to the API!");
+});
 // Export the handler to Vercel
 export default (req: Request, res: Response) => {
   app(req, res); // Use Express as a handler for serverless
