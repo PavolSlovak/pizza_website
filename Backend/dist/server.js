@@ -34,7 +34,10 @@ app.use("/api/orders", orderRoutes_js_1.orderRouter);
 app.use("/api/menus", menuRoutes_js_1.menuRouter);
 app.use("/api/locations", locationRoutes_js_1.locationRouter);
 app.use("/api/subscribe", subscribeRoutes_js_1.subscribeRouter);
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}
+exports.default = app;
 //# sourceMappingURL=server.js.map

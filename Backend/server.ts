@@ -40,6 +40,11 @@ app.use("/api/menus", menuRouter);
 app.use("/api/locations", locationRouter);
 
 app.use("/api/subscribe", subscribeRouter);
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+export default app;
