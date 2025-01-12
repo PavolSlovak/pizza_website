@@ -1,7 +1,7 @@
 import { TCartItem, TOrderForm } from "../schemas/schemas";
 
-const baseUrl = "http://localhost:8080/api";
-
+const baseUrl = import.meta.env.VITE_BASE_URL;
+console.log("baseUrl: ", baseUrl);
 export const fetchMenu = async () => {
   const response = await fetch(baseUrl + "/menus", {
     method: "GET",
