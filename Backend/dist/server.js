@@ -12,6 +12,8 @@ const db_js_1 = require("./config/db.js");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
+console.log("Port:", process.env.PORT);
+console.log("Environment:", process.env.NODE_ENV);
 if (process.env.NODE_ENV !== "production") {
     (0, dotenv_2.config)();
 }

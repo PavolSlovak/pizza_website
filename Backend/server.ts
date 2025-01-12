@@ -8,6 +8,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+console.log("Port:", process.env.PORT);
+console.log("Environment:", process.env.NODE_ENV);
 if (process.env.NODE_ENV !== "production") {
   dotenvConfig();
 }
