@@ -23,7 +23,7 @@ function MobileNavbar() {
 
   return (
     <motion.div
-      className={`fixed top-28 left-0 w-full font-bold uppercase text-sm bg-white z-10 bg-opacity-90 p-20`}
+      className={`fixed top-28 left-0 w-full font-bold uppercase text-sm bg-white z-20 bg-opacity-90 p-20`}
       initial={"closed"}
       animate={"open"}
       exit={"closed"}
