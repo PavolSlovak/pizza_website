@@ -1,14 +1,14 @@
-import dotenv from "dotenv";
 import express, { Request, Response } from "express";
-import { config as dotenvConfig } from "dotenv";
-import { corsMiddleware } from "./middlewares/cors.js";
 import { connectDB } from "./config/db.js";
 import path from "path";
+import { config as dotenvConfig } from "dotenv";
+import dotenv from "dotenv";
 
 dotenv.config();
 if (process.env.NODE_ENV !== "production") {
   dotenvConfig();
 }
+import { corsMiddleware } from "./middlewares/cors.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;

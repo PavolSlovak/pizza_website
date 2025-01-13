@@ -4,24 +4,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.stripe = void 0;
-const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
-const dotenv_2 = require("dotenv");
-const cors_js_1 = require("./middlewares/cors.js");
 const db_js_1 = require("./config/db.js");
 const path_1 = __importDefault(require("path"));
-dotenv_1.default.config();
+const dotenv_1 = require("dotenv");
+const dotenv_2 = __importDefault(require("dotenv"));
+dotenv_2.default.config();
 if (process.env.NODE_ENV !== "production") {
-    (0, dotenv_2.config)();
+    (0, dotenv_1.config)();
 }
+const cors_js_1 = require("./middlewares/cors.js");
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
-console.log("Port:", process.env.PORT);
-console.log("Environment:", process.env.NODE_ENV);
-(0, db_js_1.connectDB)();
 app.use(cors_js_1.corsMiddleware);
 app.options("*", cors_js_1.corsMiddleware);
+console.log("CORS enabled for", process.env.NODE_ENV);
+console.log("Allowed client URL:", process.env.CLIENT_URL);
+(0, db_js_1.connectDB)();
 app.use(express_1.default.json({ limit: "50mb" }));
 app.use(express_1.default.urlencoded({ extended: true, limit: "50mb" }));
 const stripe_1 = __importDefault(require("stripe"));
