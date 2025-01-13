@@ -15,13 +15,13 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
 
-console.log("Port:", process.env.PORT);
-console.log("Environment:", process.env.NODE_ENV);
-
-connectDB();
-
 app.use(corsMiddleware);
 app.options("*", corsMiddleware);
+
+console.log("CORS enabled for", process.env.NODE_ENV);
+console.log("Allowed client URL:", process.env.CLIENT_URL);
+
+connectDB();
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
