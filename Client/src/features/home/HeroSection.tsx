@@ -39,7 +39,7 @@ function HeroSection() {
                 navigate("/order?menu");
                 dispatch(setModal(true));
               }}
-              className={` flex styled-button sm:w-full w-32 bg-brightRed mt-10`}
+              className={` flex styled-button  w-40  bg-brightRed mt-10`}
             >
               Order Now
             </button>

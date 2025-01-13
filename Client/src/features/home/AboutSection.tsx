@@ -33,7 +33,7 @@ function AboutSection() {
           </p>
           {/* Mobile button */}
           <button
-            className={` flex styled-button w-full  bg-brightRed mt-10`}
+            className={` flex styled-button w-full sm:w-40  bg-brightRed mt-10`}
             onClick={() => {
               navigate("/order?menu");
               dispatch(setModal(true));

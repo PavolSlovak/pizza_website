@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { RootState as ReduxRootState } from "../../store";
 import Modal from "../../components/Modal";
 import PaymentResolved from "./PaymentResolved";
+import { useOverflow } from "../../store/hooks/useOverflow";
 
 const OrderModal = () => {
   const [component, setComponent] = useState<JSX.Element>();
@@ -20,6 +21,9 @@ const OrderModal = () => {
   const { storeLocationsDataLoading, storeLocationsDataError } = useSelector(
     (state: ReduxRootState) => state.order
   );
+  // Stop scrolling when modal is open
+  useOverflow();
+
   useEffect(() => {
     switch (location.search) {
       case "?menu":

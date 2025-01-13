@@ -28,9 +28,6 @@ const App = () => {
   // Get the closest pizza store to the user
   useGetClosestPizzaStore();
 
-  // Stop scrolling when modal is open
-  useOverflow();
-
   useEffect(() => {
     // get menu data
     dispatch(getMenuData());

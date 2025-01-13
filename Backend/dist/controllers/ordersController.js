@@ -29,7 +29,7 @@ const getStribeCheckoutSession = async (req, res) => {
                             name: storeItem.name,
                             images: [storeItem.image],
                         },
-                        unit_amount: storeItem.price,
+                        unit_amount: storeItem.price * (1 - storeItem.discount / 100),
                     },
                     quantity: cartItem.quantity,
                 };
