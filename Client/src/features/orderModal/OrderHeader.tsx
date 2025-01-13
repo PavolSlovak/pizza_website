@@ -6,11 +6,11 @@ function OrderHeader() {
         backgroundImage: "url('marbel.jpg')",
       }}
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col z-10">
         <h4 className="text-xl font-bold text-black">You can order now</h4>
         <p>Delight & joy</p>
       </div>
-      <div className="absolute right-0 max-w-[300px] ">
+      <div className="absolute -right-32 sm:right-0 max-w-[300px] ">
         <img
           src="pizza_hero.png"
           alt="Pizza"

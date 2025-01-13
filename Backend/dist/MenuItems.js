@@ -57,7 +57,7 @@ exports.menuItems = [
         discount: 0,
     },
     {
-        id: "6",
+        id: "7",
         name: "Jarritos",
         price: 800, // $5.99 in cents
         description: "Jarritos 5000ml",

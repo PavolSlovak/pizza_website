@@ -39,8 +39,7 @@ export const getStribeCheckoutSession = async (req: Request, res: Response) => {
       }),
       mode: "payment",
       success_url: `${process.env.CLIENT_URL}/order?success`,
-      cancel_url: `${process.env.CLIENT_URL}/order?cancell
-      ed`,
+      cancel_url: `${process.env.CLIENT_URL}/order?cancelled`,
     });
     res.status(200).json({ url: session.url });
   } catch (err: any) {
