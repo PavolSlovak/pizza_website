@@ -9,7 +9,6 @@ import OrderModal from "./features/orderModal/OrderModal";
 import Home from "./features/home/Home";
 import { useDispatch } from "react-redux";
 
-import { useOverflow } from "./store/hooks/useOverflow";
 import { getMenuData } from "./store/menuSlice";
 import { getStoreLocations } from "./store/orderFormSlice";
 import LoadingSpinner from "./components/LoadingSpinner";
