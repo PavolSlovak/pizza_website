@@ -2,10 +2,8 @@ import express, { Request, Response } from "express";
 import { connectDB } from "./config/db.js";
 import path from "path";
 import { config as dotenvConfig } from "dotenv";
-import dotenv from "dotenv";
 
-dotenv.config();
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "development") {
   dotenvConfig();
 }
 import { corsMiddleware } from "./middlewares/cors.js";
@@ -51,7 +49,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello, welcome to the API!");
 });
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "development") {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });

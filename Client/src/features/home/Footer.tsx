@@ -45,8 +45,8 @@ const Menu = () => {
           </a>
         </li>
         <li>
-          <a href="/oder?menu" className="text-sm">
-            OrderOnline
+          <a href="/order?menu" className="text-sm">
+            Order Online
           </a>
         </li>
         <li>
@@ -127,21 +127,21 @@ const Socials = () => {
           <img
             className="socialIcon w-8 h-8 cursor-pointer"
             src="twitter.svg"
-            alt=""
+            alt="twitter"
           />
           <img
             className="socialIcon w-8 h-8 cursor-pointer"
             src="facebook.svg"
-            alt=""
+            alt="facebook"
           />
           <img
             className="socialIcon w-8 h-8 cursor-pointer"
             src="instagram.svg"
-            alt=""
+            alt="instagram"
           />
         </div>
         <p>
-          Designed by <span className="text-brightRed">hakdnek</span>{" "}
+          Designed by <span className="text-brightRed">hakdnek</span>
         </p>
       </div>
     </div>

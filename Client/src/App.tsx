@@ -42,6 +42,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />}>
         <Route path="/order" element={<OrderModal />} />
+        <Route path="*" element={<Home />} /> {/* Not found */}
       </Route>
     </Routes>
   );

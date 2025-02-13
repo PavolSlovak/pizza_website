@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { getDistance } from "geolib";
 import { useDispatch } from "react-redux";
 import { setClosestStore, setUserLocation } from "../orderFormSlice";
@@ -22,23 +22,25 @@ export const useGetClosestPizzaStore = () => {
         console.error("Error getting location:", error);
       }
     );
-  }, []);
+  }, [dispatch]);
 
-  useEffect(() => {
-    if (userLocation && storeLocationsData.length > 0) {
-      // Calculate distances and find the closest store
-      const distances = storeLocationsData.map((store) => ({
+  const closestStore = useMemo(() => {
+    if (!userLocation || storeLocationsData.length === 0) return null;
+
+    return storeLocationsData
+      .map((store) => ({
         ...store,
         distance: getDistance(
           { latitude: userLocation.lat, longitude: userLocation.lon },
           { latitude: store.lat, longitude: store.lon }
         ),
-      }));
-
-      const closest = distances.reduce((prev, curr) =>
-        prev.distance < curr.distance ? prev : curr
-      );
-      dispatch(setClosestStore(closest));
-    }
+      }))
+      .reduce((prev, curr) => (prev.distance < curr.distance ? prev : curr));
   }, [userLocation, storeLocationsData]);
+
+  useEffect(() => {
+    if (userLocation && storeLocationsData.length > 0) {
+      dispatch(setClosestStore(closestStore));
+    }
+  }, [closestStore, dispatch]);
 };
