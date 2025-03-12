@@ -3,9 +3,9 @@ import { connectDB } from "./config/db.js";
 import path from "path";
 import { config as dotenvConfig } from "dotenv";
 
-if (process.env.NODE_ENV === "development") {
-  dotenvConfig();
-}
+// if (process.env.NODE_ENV === "development") {
+dotenvConfig();
+// }
 import { corsMiddleware } from "./middlewares/cors.js";
 
 const app = express();

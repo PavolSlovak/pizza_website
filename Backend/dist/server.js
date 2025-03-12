@@ -8,11 +8,9 @@ const express_1 = __importDefault(require("express"));
 const db_js_1 = require("./config/db.js");
 const path_1 = __importDefault(require("path"));
 const dotenv_1 = require("dotenv");
-const dotenv_2 = __importDefault(require("dotenv"));
-dotenv_2.default.config();
-if (process.env.NODE_ENV !== "production") {
-    (0, dotenv_1.config)();
-}
+// if (process.env.NODE_ENV === "development") {
+(0, dotenv_1.config)();
+// }
 const cors_js_1 = require("./middlewares/cors.js");
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
@@ -41,7 +39,7 @@ app.use("/api/subscribe", subscribeRoutes_js_1.subscribeRouter);
 app.get("/", (req, res) => {
     res.send("Hello, welcome to the API!");
 });
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "development") {
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });

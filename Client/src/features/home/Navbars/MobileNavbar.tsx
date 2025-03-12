@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useScrollDetect } from "../../../store/hooks/useScrollDetect";
 import { useDispatch } from "react-redux";
 import { toggleMobileMenu } from "../../../store/layoutSlice";
+import { Link } from "react-router-dom";
 
 export const mobileMenuVariants = {
   open: { opacity: 1 },
@@ -12,6 +13,7 @@ function MobileNavbar() {
   const { scrollToSection } = useScrollDetect();
 
   const dispatch = useDispatch();
+
   function handleClick(
     section: string,
     e: React.MouseEvent<HTMLAnchorElement>
@@ -34,39 +36,40 @@ function MobileNavbar() {
         <p className="text-brightRed">Menu</p>
 
         <li>
-          <a
-            href="#hero"
+          <Link
+            to="#hero"
             className="cursor-pointer hover:text-brightRed "
             onClick={(e) => handleClick("hero", e)}
           >
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="/order?menu"
+          <Link
+            to="/order?menu"
             className=" cursor-pointer hover:text-brightRed"
+            onClick={() => dispatch(toggleMobileMenu())}
           >
             Order Online
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#about-us"
+          <Link
+            to="#about-us"
             className="cursor-pointer hover:text-brightRed "
             onClick={(e) => handleClick("about-us", e)}
           >
             About Us
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#contact"
+          <Link
+            to="#contact"
             className="cursor-pointer hover:text-brightRed "
             onClick={(e) => handleClick("contact", e)}
           >
             Contact Us
-          </a>
+          </Link>
         </li>
       </ul>
     </motion.div>

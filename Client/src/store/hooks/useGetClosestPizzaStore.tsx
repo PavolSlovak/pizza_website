@@ -12,6 +12,7 @@ export const useGetClosestPizzaStore = () => {
   );
 
   useEffect(() => {
+    if (userLocation) return;
     // Get user location
     navigator.geolocation.getCurrentPosition(
       (position) => {
