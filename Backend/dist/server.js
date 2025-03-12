@@ -8,9 +8,9 @@ const express_1 = __importDefault(require("express"));
 const db_js_1 = require("./config/db.js");
 const path_1 = __importDefault(require("path"));
 const dotenv_1 = require("dotenv");
-// if (process.env.NODE_ENV === "development") {
-(0, dotenv_1.config)();
-// }
+if (process.env.NODE_ENV === "development") {
+    (0, dotenv_1.config)();
+}
 const cors_js_1 = require("./middlewares/cors.js");
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
